@@ -11,7 +11,7 @@ const socket_io_1 = require("socket.io");
 const http_1 = __importDefault(require("http"));
 const exploits_1 = __importDefault(require("./routes/exploits"));
 const analytics_1 = __importDefault(require("./routes/analytics"));
-// import resourcesRouter from './routes/resources';
+const resources_1 = __importDefault(require("./routes/resources"));
 // import contributionsRouter from './routes/contributions';
 const app = (0, express_1.default)();
 exports.app = app;
@@ -24,7 +24,7 @@ app.use(express_1.default.json());
 // Routes
 app.use('/exploits', exploits_1.default);
 app.use('/analytics', analytics_1.default);
-// app.use('/resources', resourcesRouter);
+app.use('/resources', resources_1.default);
 // app.use('/contributions', contributionsRouter);
 // WebSocket for live alerts
 io.on('connection', (socket) => {
