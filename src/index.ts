@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client';
 import { Server } from 'socket.io';
 import http from 'http';
 import exploitsRouter from './routes/exploits';
-// import analyticsRouter from './routes/analytics';
+import analyticsRouter from './routes/analytics';
 // import resourcesRouter from './routes/resources';
 // import contributionsRouter from './routes/contributions';
 
@@ -17,7 +17,7 @@ app.use(express.json());
 
 // Routes
 app.use('/exploits', exploitsRouter);
-// app.use('/analytics', analyticsRouter);
+app.use('/analytics', analyticsRouter);
 // app.use('/resources', resourcesRouter);
 // app.use('/contributions', contributionsRouter);
 

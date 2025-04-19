@@ -10,7 +10,7 @@ const client_1 = require("@prisma/client");
 const socket_io_1 = require("socket.io");
 const http_1 = __importDefault(require("http"));
 const exploits_1 = __importDefault(require("./routes/exploits"));
-// import analyticsRouter from './routes/analytics';
+const analytics_1 = __importDefault(require("./routes/analytics"));
 // import resourcesRouter from './routes/resources';
 // import contributionsRouter from './routes/contributions';
 const app = (0, express_1.default)();
@@ -23,7 +23,7 @@ exports.prisma = prisma;
 app.use(express_1.default.json());
 // Routes
 app.use('/exploits', exploits_1.default);
-// app.use('/analytics', analyticsRouter);
+app.use('/analytics', analytics_1.default);
 // app.use('/resources', resourcesRouter);
 // app.use('/contributions', contributionsRouter);
 // WebSocket for live alerts
