@@ -12,7 +12,7 @@ const http_1 = __importDefault(require("http"));
 const exploits_1 = __importDefault(require("./routes/exploits"));
 const analytics_1 = __importDefault(require("./routes/analytics"));
 const resources_1 = __importDefault(require("./routes/resources"));
-// import contributionsRouter from './routes/contributions';
+const contributions_1 = __importDefault(require("./routes/contributions"));
 const app = (0, express_1.default)();
 exports.app = app;
 const server = http_1.default.createServer(app);
@@ -25,7 +25,7 @@ app.use(express_1.default.json());
 app.use('/exploits', exploits_1.default);
 app.use('/analytics', analytics_1.default);
 app.use('/resources', resources_1.default);
-// app.use('/contributions', contributionsRouter);
+app.use('/contributions', contributions_1.default);
 // WebSocket for live alerts
 io.on('connection', (socket) => {
     console.log('Client connected');

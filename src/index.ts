@@ -6,7 +6,7 @@ import http from 'http';
 import exploitsRouter from './routes/exploits';
 import analyticsRouter from './routes/analytics';
 import resourcesRouter from './routes/resources';
-// import contributionsRouter from './routes/contributions';
+import contributionsRouter from './routes/contributions';
 
 const app = express();
 const server = http.createServer(app);
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use('/exploits', exploitsRouter);
 app.use('/analytics', analyticsRouter);
 app.use('/resources', resourcesRouter);
-// app.use('/contributions', contributionsRouter);
+app.use('/contributions', contributionsRouter);
 
 // WebSocket for live alerts
 io.on('connection', (socket) => {
