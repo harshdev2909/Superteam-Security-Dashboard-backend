@@ -1,0 +1,63 @@
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model Exploit {
+  id          String   @id @default(uuid())
+  date        DateTime
+  protocol    String
+  type        String
+  fundsLost   BigInt
+  txIds       String[]
+  description String
+  codeSnippet String?
+  status      String
+  createdAt   DateTime @default(now())
+  @@index([date])
+  @@index([protocol])
+}
+
+model Analytics {
+  id        String   @id @default(uuid())
+  metricType String
+  value     Json
+  updatedAt DateTime @default(now())
+  @@index([metricType])
+}
+
+model Resource {
+  id          String   @id @default(uuid())
+  title       String
+  category    String
+  description String
+  url         String?
+  createdAt   DateTime @default(now())
+  @@index([category])
+}
+
+model Contribution {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  txIds       String[]
+  evidenceUrl String?
+  submitter   String?
+  status      String   @default("Pending")
+  createdAt   DateTime @default(now())
+}
+
+model LiveAlert {
+  id            String   @id @default(uuid())
+  timestamp     DateTime
+  protocol      String
+  estimatedLoss BigInt
+  txIds         String[]
+  details       String?
+  createdAt     DateTime @default(now())
+}
