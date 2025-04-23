@@ -18,6 +18,7 @@ model Exploit {
   description String
   codeSnippet String?
   status      String
+  metadata    Json?    // New field for extra data (attacker, timeline, etc.)
   createdAt   DateTime @default(now())
   @@index([date])
   @@index([protocol])

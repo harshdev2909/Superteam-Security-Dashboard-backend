@@ -7,12 +7,12 @@ import exploitsRouter from './routes/exploits';
 import analyticsRouter from './routes/analytics';
 import resourcesRouter from './routes/resources';
 import contributionsRouter from './routes/contributions';
-
+import cors from 'cors'
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 const prisma = new PrismaClient();
-
+app.use(cors())
 app.use(express.json());
 
 // Routes

@@ -13,6 +13,7 @@ const exploits_1 = __importDefault(require("./routes/exploits"));
 const analytics_1 = __importDefault(require("./routes/analytics"));
 const resources_1 = __importDefault(require("./routes/resources"));
 const contributions_1 = __importDefault(require("./routes/contributions"));
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 exports.app = app;
 const server = http_1.default.createServer(app);
@@ -20,6 +21,7 @@ const io = new socket_io_1.Server(server);
 exports.io = io;
 const prisma = new client_1.PrismaClient();
 exports.prisma = prisma;
+app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 // Routes
 app.use('/exploits', exploits_1.default);
