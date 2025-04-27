@@ -2,10 +2,10 @@
 FROM node:18
 
 # Set the working directory in the container
-
+WORKDIR /src
 
 # Copy package.json and package-lock.json
-COPY package.json ./
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
@@ -19,6 +19,5 @@ EXPOSE 4000
 # Set environment variables
 ENV NODE_ENV=production
 
-
 # Start the application
-CMD ["npm run dev"]
+CMD ["npm", "run", "dev"]
