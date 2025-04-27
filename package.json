@@ -23,6 +23,7 @@
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
+    "@types/ws": "^8.18.1",
     "ts-node": "^10.9.2"
   }
 }

@@ -7,6 +7,7 @@ import exploitsRouter from './routes/exploits';
 import analyticsRouter from './routes/analytics';
 import resourcesRouter from './routes/resources';
 import contributionsRouter from './routes/contributions';
+import { setupLiveTrackerWebSocket } from './routes/live-tracker';
 import cors from 'cors'
 const app = express();
 const server = http.createServer(app);
@@ -14,7 +15,6 @@ const io = new Server(server);
 const prisma = new PrismaClient();
 app.use(cors())
 app.use(express.json());
-
 // Routes
 app.use('/exploits', exploitsRouter);
 app.use('/analytics', analyticsRouter);
@@ -26,6 +26,7 @@ io.on('connection', (socket) => {
   console.log('Client connected');
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
+setupLiveTrackerWebSocket(server);
 
 // Error handling middleware
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {

@@ -13,6 +13,7 @@ const exploits_1 = __importDefault(require("./routes/exploits"));
 const analytics_1 = __importDefault(require("./routes/analytics"));
 const resources_1 = __importDefault(require("./routes/resources"));
 const contributions_1 = __importDefault(require("./routes/contributions"));
+const live_tracker_1 = require("./routes/live-tracker");
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 exports.app = app;
@@ -33,6 +34,7 @@ io.on('connection', (socket) => {
     console.log('Client connected');
     socket.on('disconnect', () => console.log('Client disconnected'));
 });
+(0, live_tracker_1.setupLiveTrackerWebSocket)(server);
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);

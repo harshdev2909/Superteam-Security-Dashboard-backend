@@ -53,12 +53,17 @@ model Contribution {
   createdAt   DateTime @default(now())
 }
 
-model LiveAlert {
-  id            String   @id @default(uuid())
-  timestamp     DateTime
-  protocol      String
-  estimatedLoss BigInt
-  txIds         String[]
-  details       String?
-  createdAt     DateTime @default(now())
+model Alert {
+  id              String   @id @default(uuid())
+  timestamp       DateTime
+  protocol        String
+  type            String
+  severity        String
+  status          String
+  description     String
+  estimatedLoss   String?
+  transactionId   String?
+  attackerAddress String?
+  technicalDetails String?
+  createdAt       DateTime @default(now())
 }
