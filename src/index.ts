@@ -1,8 +1,8 @@
 import express from 'express';
 // import { config } from './config';
-import { PrismaClient } from '@prisma/client';
 import { Server } from 'socket.io';
 import http from 'http';
+import { PrismaClient } from '@prisma/client';
 import exploitsRouter from './routes/exploits';
 import analyticsRouter from './routes/analytics';
 import resourcesRouter from './routes/resources';
