@@ -29,7 +29,7 @@ The backend provides APIs for managing exploits, analytics, contributions, resou
 
 ## 📁 Project Structure
 
-```plaintext
+ ```plaintext
 .
 ├── .env                  # Environment variables (not included in version control)
 ├── .gitignore            # Git ignore file
@@ -47,9 +47,9 @@ The backend provides APIs for managing exploits, analytics, contributions, resou
 │   └── index.ts          # Main entry point
 ├── tsconfig.json         # TypeScript configuration
 └── tsconfig.tsbuildinfo  # TypeScript build info
+---
 
-
-### Key Directories and Files
+## Key Directories and Files
 
 - **`prisma/`**: Contains the Prisma schema and database migrations.
 - **`src/routes/`**: Contains route handlers for various API endpoints.
@@ -58,7 +58,7 @@ The backend provides APIs for managing exploits, analytics, contributions, resou
 - **`Dockerfile`**: Configuration for containerizing the application.
 
 ---
-
+\
 ## Setup and Installation
 
 ### Prerequisites
@@ -66,25 +66,25 @@ The backend provides APIs for managing exploits, analytics, contributions, resou
 - Node.js (v18 or higher)
 - PostgreSQL database
 - Docker (optional, for containerized deployment)
-
+\
 ### Steps
 
 1. Clone the repository:
    ```bash
    git clone <repository-url>
-   cd superteam-backend
+   cd superteam-backend \
 2. Install dependencies:
     ```bash
-npm install
+npm install\
 
 3. Set up the .env file with the following variables:
     ```bash
-    DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>
+    DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>\
 4. Apply Prisma migrations to set up the database
     ```bash
-    npx prisma migrate dev
+    npx prisma migrate dev\
 5.  Start the development server:
-    npm run dev
+    npm run dev\
 
 
 ## 🌱 Environment Variables
