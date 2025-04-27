@@ -38,7 +38,6 @@ async function generateAlert(): Promise<LiveAlert> {
   const severities = ['critical', 'high', 'medium', 'low'];
   const statuses = ['active', 'investigating', 'resolved'];
 
-  // Simulate fetching recent transactions or exploits
   const alert: LiveAlert = {
     id: `alert-${Date.now()}`,
     timestamp: new Date().toISOString(),
@@ -53,22 +52,25 @@ async function generateAlert(): Promise<LiveAlert> {
     technicalDetails: 'Suspicious activity detected in smart contract execution.',
   };
 
-  // Save alert to database
-  await prisma.alert.create({
-    data: {
-      id: alert.id,
-      timestamp: new Date(alert.timestamp),
-      protocol: alert.protocol,
-      type: alert.type,
-      severity: alert.severity,
-      status: alert.status,
-      description: alert.description,
-      estimatedLoss: alert.estimatedLoss,
-      transactionId: alert.transactionId,
-      attackerAddress: alert.attackerAddress,
-      technicalDetails: alert.technicalDetails,
-    },
-  });
+  try {
+    await prisma.alert.create({
+      data: {
+        id: alert.id,
+        timestamp: new Date(alert.timestamp),
+        protocol: alert.protocol,
+        type: alert.type,
+        severity: alert.severity,
+        status: alert.status,
+        description: alert.description,
+        estimatedLoss: alert.estimatedLoss,
+        transactionId: alert.transactionId,
+        attackerAddress: alert.attackerAddress,
+        technicalDetails: alert.technicalDetails,
+      },
+    });
+  } catch (error) {
+    console.error('Failed to save alert to database:', error);
+  }
 
   return alert;
 }
@@ -88,6 +90,10 @@ export function setupLiveTrackerWebSocket(server: import('http').Server) {
       })
       .then((alerts) => {
         ws.send(JSON.stringify({ type: 'initial', data: serializeBigInt(alerts) }));
+      })
+      .catch((error) => {
+        console.error('Failed to fetch recent alerts:', error);
+        ws.send(JSON.stringify({ type: 'error', message: 'Failed to fetch recent alerts' }));
       });
 
     // Simulate new alerts every 10-30 seconds

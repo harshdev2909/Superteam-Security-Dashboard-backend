@@ -29,7 +29,6 @@ function generateAlert() {
         ];
         const severities = ['critical', 'high', 'medium', 'low'];
         const statuses = ['active', 'investigating', 'resolved'];
-        // Simulate fetching recent transactions or exploits
         const alert = {
             id: `alert-${Date.now()}`,
             timestamp: new Date().toISOString(),
@@ -43,22 +42,26 @@ function generateAlert() {
             attackerAddress: Math.random() > 0.4 ? `0x${Math.random().toString(16).substring(2, 42)}` : undefined,
             technicalDetails: 'Suspicious activity detected in smart contract execution.',
         };
-        // Save alert to database
-        yield index_1.prisma.alert.create({
-            data: {
-                id: alert.id,
-                timestamp: new Date(alert.timestamp),
-                protocol: alert.protocol,
-                type: alert.type,
-                severity: alert.severity,
-                status: alert.status,
-                description: alert.description,
-                estimatedLoss: alert.estimatedLoss,
-                transactionId: alert.transactionId,
-                attackerAddress: alert.attackerAddress,
-                technicalDetails: alert.technicalDetails,
-            },
-        });
+        try {
+            yield index_1.prisma.alert.create({
+                data: {
+                    id: alert.id,
+                    timestamp: new Date(alert.timestamp),
+                    protocol: alert.protocol,
+                    type: alert.type,
+                    severity: alert.severity,
+                    status: alert.status,
+                    description: alert.description,
+                    estimatedLoss: alert.estimatedLoss,
+                    transactionId: alert.transactionId,
+                    attackerAddress: alert.attackerAddress,
+                    technicalDetails: alert.technicalDetails,
+                },
+            });
+        }
+        catch (error) {
+            console.error('Failed to save alert to database:', error);
+        }
         return alert;
     });
 }
@@ -75,6 +78,10 @@ function setupLiveTrackerWebSocket(server) {
         })
             .then((alerts) => {
             ws.send(JSON.stringify({ type: 'initial', data: serializeBigInt(alerts) }));
+        })
+            .catch((error) => {
+            console.error('Failed to fetch recent alerts:', error);
+            ws.send(JSON.stringify({ type: 'error', message: 'Failed to fetch recent alerts' }));
         });
         // Simulate new alerts every 10-30 seconds
         const alertInterval = setInterval(() => __awaiter(this, void 0, void 0, function* () {
