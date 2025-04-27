@@ -66,25 +66,25 @@ The backend provides APIs for managing exploits, analytics, contributions, resou
 - Node.js (v18 or higher)
 - PostgreSQL database
 - Docker (optional, for containerized deployment)
-\
+
 ### Steps
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd superteam-backend \
+   git clone https://github.com/harshdev2909/Superteam-Security-Dashboard-backend.git
+   cd superteam-backend 
 2. Install dependencies:
     ```bash
-npm install\
+npm install
 
 3. Set up the .env file with the following variables:
     ```bash
-    DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>\
+    DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>
 4. Apply Prisma migrations to set up the database
     ```bash
-    npx prisma migrate dev\
+    npx prisma migrate dev
 5.  Start the development server:
-    npm run dev\
+    npm run dev
 
 
 ## 🌱 Environment Variables
@@ -142,55 +142,18 @@ Exposes RESTful APIs for managing exploits, analytics, contributions, resources,
 ---
 
 ## 🛠️ Scripts
-
+    
 ### Ingest Sample Exploits
 
-Script to ingest sample exploit data from `exploits.json` into the database.
-
-**Run:**
-
+Script to ingest sample exploit data from `exploits.json` into the database. :-
+    
 ```bash
-# Example (adjust depending on your script setup)
-ts-node src/scripts/ingestSampleExploits.ts
-Scrape Rekt
-Script to scrape exploit data from Rekt.news and ingest it into the database.
+    ts-node src/scripts/ingestSampleExploits.ts
 
-Run:
+---
+## Prisma Client Generation
 
-```bash
-Copy
-Edit
-# Example (adjust depending on your script setup)
-ts-node src/scripts/scrapeRekt.ts
-
-🐳 Docker Support
-The application includes a Dockerfile for containerized deployment.
-
-🔧 Build and Run
-Build the Docker image:
-
-```bash
-Copy
-Edit
-docker build -t my-app .
-Run the container:
-
-```bash
-Copy
-Edit
-docker run -p 3000:3000 my-app
-⚙️ Development
-TypeScript Compilation
-The project uses TypeScript. To compile the code, run:
-
-```bash
-Copy
-Edit
-tsc
-Prisma Client Generation
 If you update the Prisma schema, regenerate the Prisma client:
 
-```bash
-Copy
-Edit
+    ```bash
 npx prisma generate
