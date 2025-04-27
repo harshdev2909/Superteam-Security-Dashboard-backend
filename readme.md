@@ -29,7 +29,7 @@ The backend provides APIs for managing exploits, analytics, contributions, resou
 
 ## 📁 Project Structure
 
- ```plaintext
+ 
 .
 ├── .env                  # Environment variables (not included in version control)
 ├── .gitignore            # Git ignore file
