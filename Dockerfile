@@ -7,12 +7,14 @@ WORKDIR /src
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Copy everything first
+COPY . .
+
 # Install dependencies
 RUN npm install
-# Generate Prisma client
+
+# Generate Prisma client (now schema.prisma is available)
 RUN npx prisma generate
-# Copy the rest of the application code
-COPY . .
 
 # Expose the port the app runs on
 EXPOSE 4000
