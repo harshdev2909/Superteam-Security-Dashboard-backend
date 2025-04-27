@@ -19,8 +19,6 @@ EXPOSE 4000
 # Set environment variables
 ENV NODE_ENV=production
 
-# Build the TypeScript code
-RUN npm run build
 
 # Start the application
 CMD ["npm run dev"]
