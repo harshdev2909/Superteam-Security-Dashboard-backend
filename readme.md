@@ -1,10 +1,12 @@
-# Superteam Backend
+# 🚀 Superteam Backend
 
-This repository contains the backend codebase for the Superteam project. It is built using **Node.js**, **TypeScript**, **Express**, and **Prisma** ORM. The backend provides APIs for managing exploits, analytics, contributions, resources, and live alerts related to blockchain protocols. It also includes scripts for ingesting and scraping exploit data.
+This repository contains the backend codebase for the **Superteam** project. It is built using **Node.js**, **TypeScript**, **Express**, and **Prisma** ORM.
+
+The backend provides APIs for managing exploits, analytics, contributions, resources, and live alerts related to blockchain protocols. It also includes scripts for ingesting and scraping exploit data.
 
 ---
 
-## Table of Contents
+## 📚 Table of Contents
 
 - [Project Structure](#project-structure)
 - [Setup and Installation](#setup-and-installation)
@@ -25,8 +27,26 @@ This repository contains the backend codebase for the Superteam project. It is b
 
 ---
 
-## Project Structure
-``` . ├── .env # Environment variables (not included in version control) ├── .gitignore # Git ignore file ├── Dockerfile # Docker configuration ├── exploits.json # Sample exploit data ├── package.json # Node.js dependencies and scripts ├── prisma/ # Prisma ORM configuration and migrations │ ├── migrations/ # Database migrations │ └── schema.prisma # Prisma schema ├── src/ # Source code │ ├── config/ # Configuration files │ ├── routes/ # API route handlers │ ├── scripts/ # Utility scripts │ ├── types/ # TypeScript type definitions │ └── index.ts # Main entry point ├── tsconfig.json # TypeScript configuration └── tsconfig.tsbuildinfo # TypeScript build info ```
+## 📁 Project Structure
+
+```plaintext
+.
+├── .env                  # Environment variables (not included in version control)
+├── .gitignore            # Git ignore file
+├── Dockerfile            # Docker configuration
+├── exploits.json         # Sample exploit data
+├── package.json          # Node.js dependencies and scripts
+├── prisma/               # Prisma ORM configuration and migrations
+│   ├── migrations/       # Database migrations
+│   └── schema.prisma     # Prisma schema
+├── src/                  # Source code
+│   ├── config/           # Configuration files
+│   ├── routes/           # API route handlers
+│   ├── scripts/          # Utility scripts
+│   ├── types/            # TypeScript type definitions
+│   └── index.ts          # Main entry point
+├── tsconfig.json         # TypeScript configuration
+└── tsconfig.tsbuildinfo  # TypeScript build info
 
 
 ### Key Directories and Files
@@ -54,7 +74,7 @@ This repository contains the backend codebase for the Superteam project. It is b
    git clone <repository-url>
    cd superteam-backend
 2. Install dependencies:
-```bash
+    ```bash
 npm install
 
 3. Set up the .env file with the following variables:
