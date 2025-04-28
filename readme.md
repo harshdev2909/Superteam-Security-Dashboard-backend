@@ -1,6 +1,6 @@
-# 🚀 Superteam Backend
+# 🚀 Superteam Security Dashboard Backend
 
-This repository contains the backend codebase for the **Superteam** project. It is built using **Node.js**, **TypeScript**, **Express**, and **Prisma** ORM.
+This repository contains the backend codebase for the **Superteam Security Dashboard** project, an open-source platform for tracking and analyzing blockchain security exploits. It is built using **Node.js**, **TypeScript**, **Express**, and **Prisma** ORM.
 
 The backend provides APIs for managing exploits, analytics, contributions, resources, and live alerts related to blockchain protocols. It also includes scripts for ingesting and scraping exploit data.
 
@@ -65,17 +65,19 @@ The backend provides APIs for managing exploits, analytics, contributions, resou
 
 - Node.js (v18 or higher)
 - PostgreSQL database
-- Docker (optional, for containerized deployment)
 
 ### Steps
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/harshdev2909/Superteam-Security-Dashboard-backend.git
-   cd superteam-backend 
+   cd Superteam-Security-Dashboard-backend
+   ```
+
 2. Install dependencies:
-    ```bash
-npm install
+   ```bash
+   npm install
+   ```
 
 3. Set up the .env file with the following variables:
     ```bash
@@ -83,23 +85,28 @@ npm install
 4. Apply Prisma migrations to set up the database
     ```bash
     npx prisma migrate dev
-5.  Start the development server:
-    npm run dev
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
 
 ## 🌱 Environment Variables
 
-The application requires the following environment variables:
+Create a `.env` file in the root directory and add the following environment variables:
 
-- **`DATABASE_URL`**: Connection string for the PostgreSQL database.
+- **`DATABASE_URL`**: Connection string for the PostgreSQL database (required)
+  ```
+  DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>
+  ```
 
 ---
 
 ## 🗂️ Database Schema
 
-The database schema is defined in `schema.prisma`. It includes the following models:
+The database schema is defined in `prisma/schema.prisma`. It includes the following models:
 
-- **`Exploit`**: Stores information about blockchain exploits.
+- **`Exploit`**: Stores information about blockchain exploits, including metadata.
 - **`Analytics`**: Stores aggregated analytics data.
 - **`Resource`**: Stores educational resources.
 - **`Contribution`**: Stores user-submitted contributions.
@@ -143,17 +150,26 @@ Exposes RESTful APIs for managing exploits, analytics, contributions, resources,
 
 ## 🛠️ Scripts
     
-### Ingest Sample Exploits
+### Available Scripts
 
-Script to ingest sample exploit data from `exploits.json` into the database. :-
-    
-```bash
-    ts-node src/scripts/ingestSampleExploits.ts
+1. **Ingest Sample Exploits**
+   ```bash
+   # Ingest sample exploit data from exploits.json into the database
+   npx ts-node src/scripts/ingestSampleExploits.ts
+   ```
 
----
-## Prisma Client Generation
+2. **Scrape Rekt Data**
+   ```bash
+   # Scrape exploit data from external sources
+   npx ts-node src/scripts/scrapeRekt.ts
+   ```
 
-If you update the Prisma schema, regenerate the Prisma client:
+3. **Prisma Client Generation**
+   ```bash
+   # Regenerate Prisma client after schema changes
+   npx prisma generate
+   ```
 
-    ```bash
-npx prisma generate
+## 📝 License
+
+This project is open source and available under the ISC License.
