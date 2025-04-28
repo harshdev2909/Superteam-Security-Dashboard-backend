@@ -93,12 +93,17 @@ The backend provides APIs for managing exploits, analytics, contributions, resou
 
 ## 🌱 Environment Variables
 
-Create a `.env` file in the root directory and add the following environment variables:
+A `.env.sample` file is provided as a template. Copy it to create your own `.env` file:
 
-- **`DATABASE_URL`**: Connection string for the PostgreSQL database (required)
-  ```
-  DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>
-  ```
+```bash
+cp .env.sample .env
+```
+
+Then update the values in `.env` with your configuration:
+
+- **`DATABASE_URL`**: PostgreSQL connection string (required)
+- **`PORT`**: Server port (default: 3000)
+- **`NODE_ENV`**: Environment mode (development/production)
 
 ---
 
